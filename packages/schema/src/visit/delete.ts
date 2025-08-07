@@ -1,5 +1,5 @@
-import { schema } from "@opd/db_schema/visit";
-import { z } from "zod";
+import { schema } from '@opd/db_schema/visit';
+import { z } from 'zod';
 
 /**
  * Delete visit request schema

@@ -1,21 +1,21 @@
-import { Command as CommandPrimitive } from "cmdk";
-import { Check } from "lucide-react";
+import { Command as CommandPrimitive } from 'cmdk';
+import { Check } from 'lucide-react';
 import {
   type KeyboardEvent,
   type ReactNode,
   useCallback,
   useRef,
   useState,
-} from "react";
-import { cn } from "@/lib/utils";
-import Conditional from "../Conditional";
+} from 'react';
+import { cn } from '@/lib/utils';
+import Conditional from '../Conditional';
 import {
   CommandGroup,
   CommandInput,
   CommandItem,
   CommandList,
-} from "./command";
-import { Skeleton } from "./skeleton";
+} from './command';
+import { Skeleton } from './skeleton';
 
 export interface Props<T> {
   options: T[];
@@ -56,7 +56,7 @@ const AutoComplete = <T,>({
   const [isOpen, setOpen] = useState(false);
   const [selected, setSelected] = useState<T | undefined>(value);
   const [inputValue, setInputValue] = useState<string>(
-    value ? getLabel(value) : "",
+    value ? getLabel(value) : ''
   );
 
   const handleInputChange = useCallback(
@@ -64,7 +64,7 @@ const AutoComplete = <T,>({
       setInputValue(newValue);
       onInputChange?.(newValue);
     },
-    [onInputChange],
+    [onInputChange]
   );
 
   const handleKeyDown = useCallback(
@@ -80,9 +80,9 @@ const AutoComplete = <T,>({
       }
 
       // This is not a default behaviour of the <input /> field
-      if (event.key === "Enter" && input.value !== "") {
+      if (event.key === 'Enter' && input.value !== '') {
         const optionToSelect = options.find(
-          (option) => getLabel(option) === input.value,
+          (option) => getLabel(option) === input.value
         );
         if (optionToSelect) {
           setSelected(optionToSelect);
@@ -90,16 +90,16 @@ const AutoComplete = <T,>({
         }
       }
 
-      if (event.key === "Escape") {
+      if (event.key === 'Escape') {
         input.blur();
       }
     },
-    [isOpen, options, onValueChange, getLabel],
+    [isOpen, options, onValueChange, getLabel]
   );
 
   const handleBlur = useCallback(() => {
     setOpen(false);
-    setInputValue(selected ? getLabel(selected) : "");
+    setInputValue(selected ? getLabel(selected) : '');
   }, [selected, getLabel]);
 
   const handleSelectOption = useCallback(
@@ -115,7 +115,7 @@ const AutoComplete = <T,>({
         inputRef?.current?.blur();
       }, 0);
     },
-    [onValueChange, getLabel],
+    [onValueChange, getLabel]
   );
 
   return (
@@ -123,7 +123,7 @@ const AutoComplete = <T,>({
       <div
         className={cn(
           className,
-          "relative flex w-full w-full rounded-md rounded-md border border px-2 focus-within:ring-1 focus-within:ring-ring",
+          'relative flex w-full w-full rounded-md rounded-md border border px-2 focus-within:ring-1 focus-within:ring-ring'
         )}
       >
         <Conditional condition={!!preAdornment}>{preAdornment}</Conditional>
@@ -139,11 +139,11 @@ const AutoComplete = <T,>({
         />
         <Conditional condition={!!postAdornment}>{postAdornment}</Conditional>
       </div>
-      <div className={cn(className, popoverClassName, "relative mt-1")}>
+      <div className={cn(className, popoverClassName, 'relative mt-1')}>
         <div
           className={cn(
-            "fade-in-0 zoom-in-95 absolute top-0 z-10 w-full animate-in rounded-xl bg-primary-foreground outline-none",
-            isOpen ? "block" : "hidden",
+            'fade-in-0 zoom-in-95 absolute top-0 z-10 w-full animate-in rounded-xl bg-primary-foreground outline-none',
+            isOpen ? 'block' : 'hidden'
           )}
         >
           <CommandList className="rounded-lg ring-1 ring-slate-200">
@@ -163,8 +163,8 @@ const AutoComplete = <T,>({
                   return (
                     <CommandItem
                       className={cn(
-                        "flex w-full items-center gap-2",
-                        !isSelected ? "pl-8" : null,
+                        'flex w-full items-center gap-2',
+                        isSelected ? null : 'pl-8'
                       )}
                       key={getValue(option)}
                       onMouseDown={(event) => {
@@ -181,11 +181,11 @@ const AutoComplete = <T,>({
                 })}
               </CommandGroup>
             ) : null}
-            {!isLoading ? (
+            {isLoading ? null : (
               <CommandPrimitive.Empty className="select-none rounded-sm px-2 py-3 text-center text-sm">
                 {emptyMessage}
               </CommandPrimitive.Empty>
-            ) : null}
+            )}
           </CommandList>
         </div>
       </div>

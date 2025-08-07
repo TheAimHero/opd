@@ -1,17 +1,17 @@
 import { env } from 'cloudflare:workers';
-import { auth } from './lib/auth';
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 import { logger } from 'hono/logger';
-import { honoRpcRouter } from './oprc/router';
-import { patientRouter } from './features/patient/api';
+import { secureHeaders } from 'hono/secure-headers';
 import { dataRouter } from './features/data/api';
 import { medicineRouter } from './features/medicine/api';
+import { patientRouter } from './features/patient/api';
 import { surgeryRouter } from './features/surgery/api';
 import { testRouter } from './features/test/api';
 import { visitRouter } from './features/visit/api';
+import { auth } from './lib/auth';
 import { randomDelayMiddleware } from './middlewares/timing';
-import { secureHeaders } from 'hono/secure-headers';
+import { honoRpcRouter } from './oprc/router';
 
 const app = new Hono({ strict: false });
 

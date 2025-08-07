@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import type { FieldPath, FieldValues, UseFormReturn } from "react-hook-form";
-import Conditional from "@/components/Conditional";
+import type { FieldPath, FieldValues, UseFormReturn } from 'react-hook-form';
+import Conditional from '@/components/Conditional';
 import {
   FormControl,
   FormDescription,
@@ -9,15 +9,15 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
+} from '@/components/ui/form';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { cn } from "@/lib/utils";
+} from '@/components/ui/select';
+import { cn } from '@/lib/utils';
 
 interface Props<T extends FieldValues, TOption> {
   form: UseFormReturn<T>;
@@ -38,7 +38,7 @@ const SelectInput = <T extends FieldValues, TOption>({
   name,
   label,
   description,
-  placeholder = "Select an option",
+  placeholder = 'Select an option',
   className,
   itemClassName,
   options,
@@ -51,7 +51,7 @@ const SelectInput = <T extends FieldValues, TOption>({
       control={form.control}
       name={name}
       render={({ field }) => (
-        <FormItem className={cn("", className)}>
+        <FormItem className={cn('', className)}>
           <FormLabel className="capitalize">{label}</FormLabel>
           <FormControl>
             <Select

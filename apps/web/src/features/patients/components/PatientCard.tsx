@@ -1,14 +1,14 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   DescriptionDetail,
   DescriptionGroup,
   DescriptionList,
   DescriptionTerm,
-} from "@/components/ui/description-list";
-import { Skeleton } from "@/components/ui/skeleton";
-import { useGetPatient } from "@/features/patients/hooks/getPatient";
-import { calculateAge, formatLongIndianDate } from "@/lib/date";
-import { cn } from "@/lib/utils";
+} from '@/components/ui/description-list';
+import { Skeleton } from '@/components/ui/skeleton';
+import { useGetPatient } from '@/features/patients/hooks/getPatient';
+import { calculateAge, formatLongIndianDate } from '@/lib/date';
+import { cn } from '@/lib/utils';
 
 interface Props {
   patientId: number;
@@ -20,7 +20,7 @@ const PatientCard = ({ patientId, className }: Props) => {
 
   if (patient.isLoading || !patient.data || patient.isError) {
     return (
-      <Card className={cn(className, "p-2")}>
+      <Card className={cn(className, 'p-2')}>
         <CardHeader className="flex items-center justify-between">
           <CardTitle className="mx-auto sm:text-xl">
             Patient Investigation Report
@@ -51,7 +51,7 @@ const PatientCard = ({ patientId, className }: Props) => {
   }
 
   return (
-    <Card className={cn(className, "p-2")}>
+    <Card className={cn(className, 'p-2')}>
       <CardHeader className="flex items-center justify-between">
         <CardTitle className="mx-auto sm:text-xl">
           Patient Investigation Report

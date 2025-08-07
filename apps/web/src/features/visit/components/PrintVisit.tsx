@@ -1,12 +1,12 @@
-import { schema as prescribedMedicineSchema } from "@madhuprema/db_schema/prescribedMedicine";
-import { schema as prescribedTest } from "@madhuprema/db_schema/prescribedTest";
-import { schema as visitSchema } from "@madhuprema/db_schema/visit";
-import { PrinterIcon } from "lucide-react";
-import { useRef } from "react";
-import { useReactToPrint } from "react-to-print";
-import z from "zod";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { schema as prescribedMedicineSchema } from '@opd/db_schema/prescribedMedicine';
+import { schema as prescribedTest } from '@opd/db_schema/prescribedTest';
+import { schema as visitSchema } from '@opd/db_schema/visit';
+import { PrinterIcon } from 'lucide-react';
+import { useRef } from 'react';
+import { useReactToPrint } from 'react-to-print';
+import z from 'zod';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   Dialog,
   DialogClose,
@@ -16,17 +16,17 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { Separator } from "@/components/ui/separator";
-import PatientCard from "@/features/patients/components/PatientCard";
-import { formatLongIndianDate, formatShortIndianDate } from "@/lib/date";
+} from '@/components/ui/dialog';
+import { Separator } from '@/components/ui/separator';
+import PatientCard from '@/features/patients/components/PatientCard';
+import { formatLongIndianDate, formatShortIndianDate } from '@/lib/date';
 
 const schema = visitSchema.visitInsertSchema.omit({ id: true }).extend({
   medicine: z
     .array(
       prescribedMedicineSchema.prescribedMedicineInsertSchema.omit({
         visitId: true,
-      }),
+      })
     )
     .optional(),
   test: z
@@ -40,13 +40,19 @@ type Visit = z.infer<typeof schema>;
 const formatMedicineSchedule = (
   morning: number,
   afternoon: number,
-  evening: number,
+  evening: number
 ) => {
   const schedule = [];
-  if (morning > 0) schedule.push(`${morning} in morning`);
-  if (afternoon > 0) schedule.push(`${afternoon} in afternoon`);
-  if (evening > 0) schedule.push(`${evening} in evening`);
-  return schedule.join(", ") || "As needed";
+  if (morning > 0) {
+    schedule.push(`${morning} in morning`);
+  }
+  if (afternoon > 0) {
+    schedule.push(`${afternoon} in afternoon`);
+  }
+  if (evening > 0) {
+    schedule.push(`${evening} in evening`);
+  }
+  return schedule.join(', ') || 'As needed';
 };
 
 interface DocumentProps {
@@ -54,22 +60,20 @@ interface DocumentProps {
   ref?: React.Ref<HTMLDivElement>;
 }
 
-const clinicName = "madhuprema clinic";
-const clinicAddress = "123 Main Street, City, State, Country";
-const clinicPhone = "123-456-7890";
-const doctorName = "Dr. John Doe";
-const med = Array(8)
-  .fill(0)
-  .map((_, i) => ({
-    id: i,
-    name: `Med${i}`,
-    medicineType: "Tablet",
-    morning: 1,
-    afternoon: 1,
-    evening: 2,
-    note: `Note${i}`,
-  }));
-const test = Array(2)
+const clinicName = 'opd clinic';
+const clinicAddress = '123 Main Street, City, State, Country';
+const clinicPhone = '123-456-7890';
+const doctorName = 'Dr. John Doe';
+const med = new Array(8).fill(0).map((_, i) => ({
+  id: i,
+  name: `Med${i}`,
+  medicineType: 'Tablet',
+  morning: 1,
+  afternoon: 1,
+  evening: 2,
+  note: `Note${i}`,
+}));
+const test = new Array(2)
   .fill(2)
   .map((_, i) => ({ id: 1, name: `Test${i}`, note: `Note${i}` }));
 
@@ -216,17 +220,17 @@ const VisitDocument = ({ visitData, ref }: DocumentProps) => {
             {/* map over medicine here */}
             {med.map((m) => (
               <div
-                key={m.id}
                 className="flex w-full flex-row items-baseline justify-between gap-2 rounded-lg border bg-gray-50 p-2"
+                key={m.id}
               >
                 <span className="flex items-baseline gap-2">
                   {m.name}
-                  <Button variant="outline" className="text-xs">
+                  <Button className="text-xs" variant="outline">
                     {m.medicineType}
                   </Button>
                 </span>
                 <div className="mb-1 text-gray-600 text-sm">
-                  <span className="font-mium">Dosage:</span>{" "}
+                  <span className="font-mium">Dosage:</span>{' '}
                   {formatMedicineSchedule(m.morning, m.afternoon, m.evening)}
                 </div>
                 {m.note && (
@@ -239,8 +243,8 @@ const VisitDocument = ({ visitData, ref }: DocumentProps) => {
             {/* map over tests here */}
             {test.map((t) => (
               <div
-                key={t.id}
                 className="flex flex-row items-baseline justify-between gap-2 rounded-lg border bg-gray-50 p-2"
+                key={t.id}
               >
                 <div className="flex items-center gap-2">{t.name}</div>
                 {t.note && (
@@ -311,7 +315,7 @@ const PrintVisit = ({ visitData: visit }: Props) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline" onClick={(e) => e.stopPropagation()}>
+        <Button onClick={(e) => e.stopPropagation()} variant="outline">
           <PrinterIcon />
           Print
         </Button>
@@ -324,18 +328,18 @@ const PrintVisit = ({ visitData: visit }: Props) => {
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4">
-          <VisitDocument visitData={visit} ref={contentRef} />
+          <VisitDocument ref={contentRef} visitData={visit} />
         </div>
         <DialogFooter>
           <DialogClose asChild>
             <Button variant="outline">Cancel</Button>
           </DialogClose>
           <Button
-            variant="outline"
             onClick={(e) => {
               reactToPrintFn();
               e.stopPropagation();
             }}
+            variant="outline"
           >
             Print
           </Button>

@@ -1,5 +1,5 @@
-import { schema } from "@opd/db_schema/surgery";
-import { z } from "zod";
+import { schema } from '@opd/db_schema/surgery';
+import { z } from 'zod';
 
 /**
  * Delete surgery request schema

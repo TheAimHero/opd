@@ -12,6 +12,8 @@ export const createMedicineDb = async (
     .insert(dbSchema.medicineTable)
     .values(medicineData)
     .returning();
-  if (!medicine) throw new Error('Medicine not created');
+  if (!medicine) {
+    throw new Error('Medicine not created');
+  }
   return medicine;
 };

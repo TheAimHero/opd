@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import ThemeToggleButton from "@/components/buttons/ThemeToggleButton";
-import { SidebarTrigger } from "@/components/ui/sidebar";
-import UserAvatar from "./Avatar";
+import ThemeToggleButton from '@/components/buttons/ThemeToggleButton';
+import { SidebarTrigger } from '@/components/ui/sidebar';
+import UserAvatar from './Avatar';
 
 const Navbar = () => {
   return (

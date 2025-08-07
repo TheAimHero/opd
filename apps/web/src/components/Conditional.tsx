@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ReactNode } from 'react';
 
 interface Props {
   condition: boolean;
@@ -6,7 +6,9 @@ interface Props {
 }
 
 const Conditional = ({ condition, children }: Props) => {
-  if (condition) return children;
+  if (condition) {
+    return children;
+  }
   return <></>;
 };
 

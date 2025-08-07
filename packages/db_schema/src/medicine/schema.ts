@@ -1,6 +1,6 @@
-import { createSchemaFactory } from "drizzle-zod";
-import z from "zod";
-import { medicineTable } from "./db";
+import { createSchemaFactory } from 'drizzle-zod';
+import z from 'zod';
+import { medicineTable } from './db';
 
 export const { createInsertSchema, createSelectSchema, createUpdateSchema } =
   createSchemaFactory({
@@ -9,7 +9,7 @@ export const { createInsertSchema, createSelectSchema, createUpdateSchema } =
   });
 
 export const medicineInsertSchema = createInsertSchema(medicineTable, {
-  name: (s) => s.nonempty("Name is required."),
+  name: (s) => s.nonempty('Name is required.'),
 });
 
 export const medicineUpdateSchema = createUpdateSchema(medicineTable);

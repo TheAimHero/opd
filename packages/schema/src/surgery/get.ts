@@ -1,5 +1,5 @@
-import { schema } from "@opd/db_schema/surgery";
-import z from "zod";
+import { schema } from '@opd/db_schema/surgery';
+import z from 'zod';
 
 export const getSurgeryReqParams = z.object({ id: z.coerce.number() });
 

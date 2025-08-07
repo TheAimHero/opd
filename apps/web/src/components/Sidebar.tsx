@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { ChevronRightIcon } from "lucide-react";
-import Link from "next/link";
-import type { HTMLAttributes } from "react";
+import { ChevronRightIcon } from 'lucide-react';
+import Link from 'next/link';
+import type { HTMLAttributes } from 'react';
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible";
+} from '@/components/ui/collapsible';
 import {
   Sidebar,
   SidebarContent,
@@ -21,8 +21,8 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
-} from "@/components/ui/sidebar";
-import type { SidebarItems } from "@/types/sidebar";
+} from '@/components/ui/sidebar';
+import type { SidebarItems } from '@/types/sidebar';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   items: SidebarItems[];
@@ -33,7 +33,7 @@ const AppSidebar = ({ items, ...props }: Props) => {
     <Sidebar
       collapsible="offcanvas"
       side="left"
-      title="madhuprema-clinic"
+      title="opd"
       variant="sidebar"
       {...props}
     >

@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import type { getSurgery } from "@madhuprema/schema/surgery";
+import type { getSurgery } from '@opd/schema/surgery';
 import {
   type ColumnDef,
   getCoreRowModel,
@@ -8,23 +8,23 @@ import {
   getPaginationRowModel,
   type PaginationState,
   useReactTable,
-} from "@tanstack/react-table";
-import { useState } from "react";
-import { useDebounceValue } from "usehooks-ts";
-import type z from "zod";
-import StatefulTable from "@/components/table/StatefulTable";
-import { useGetAllSurgery } from "@/features/surgery/hooks/getSurgery";
-import { cn } from "@/lib/utils";
+} from '@tanstack/react-table';
+import { useState } from 'react';
+import { useDebounceValue } from 'usehooks-ts';
+import type z from 'zod';
+import StatefulTable from '@/components/table/StatefulTable';
+import { useGetAllSurgery } from '@/features/surgery/hooks/getSurgery';
+import { cn } from '@/lib/utils';
 
 type SurgeryType = z.infer<typeof getSurgery.getAllSurgeryRes>[number];
 
 const columns: ColumnDef<SurgeryType>[] = [
   {
-    accessorKey: "name",
-    id: "name",
-    header: "Name",
+    accessorKey: 'name',
+    id: 'name',
+    header: 'Name',
     cell: ({ row }) => <span className="capitalize">{row.original.name}</span>,
-    filterFn: "includesString",
+    filterFn: 'includesString',
     size: 100,
   },
 ];
@@ -38,7 +38,7 @@ const SurgeryList = ({ className }: Props) => {
     pageIndex: 0,
     pageSize: 19,
   });
-  const [globalFilter, setGlobalFilter] = useState<string>("");
+  const [globalFilter, setGlobalFilter] = useState<string>('');
 
   const [debouncedValue] = useDebounceValue(globalFilter, 500);
 
@@ -50,10 +50,10 @@ const SurgeryList = ({ className }: Props) => {
 
   const table = useReactTable({
     data: surgery ?? [],
-    columns: columns,
+    columns,
     rowCount: surgery?.length ?? 0,
 
-    globalFilterFn: "includesString",
+    globalFilterFn: 'includesString',
 
     enableColumnFilters: true, // this is required to be able to filter columns
     enableGlobalFilter: true, // this is required to be able to filter the table
@@ -74,9 +74,9 @@ const SurgeryList = ({ className }: Props) => {
 
   return (
     <StatefulTable
-      className={cn("h-[800px]", className)}
-      onFilterChange={(v) => console.log(v)}
-      onSelectedRowChange={(rows) => console.log(rows.map((r) => r.original))}
+      className={cn('h-[800px]', className)}
+      onFilterChange={(_v) => {}}
+      onSelectedRowChange={(_rows) => {}}
       table={table}
     />
   );

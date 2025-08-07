@@ -1,5 +1,5 @@
-import { createSchemaFactory } from "drizzle-zod";
-import { userTable } from "./db";
+import { createSchemaFactory } from 'drizzle-zod';
+import { userTable } from './db';
 
 const { createInsertSchema, createSelectSchema, createUpdateSchema } =
   createSchemaFactory({ coerce: { number: true, date: true } });

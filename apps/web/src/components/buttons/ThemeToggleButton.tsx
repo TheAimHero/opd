@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { MoonIcon, SunIcon } from "lucide-react";
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
+import { MoonIcon, SunIcon } from 'lucide-react';
+import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
+import { Button } from '@/components/ui/button';
 
 const ThemeToggleButton = () => {
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
 
   const toggleTheme = () => {
-    setTheme(resolvedTheme === "dark" ? "light" : "dark");
+    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
   };
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const ThemeToggleButton = () => {
 
   return (
     <Button className="rounded-full" onClick={toggleTheme} size="icon">
-      {resolvedTheme === "dark" ? <SunIcon /> : <MoonIcon />}
+      {resolvedTheme === 'dark' ? <SunIcon /> : <MoonIcon />}
     </Button>
   );
 };

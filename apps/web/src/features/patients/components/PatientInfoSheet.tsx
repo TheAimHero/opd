@@ -1,5 +1,5 @@
-import { CloudAlertIcon, Loader2Icon } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { CloudAlertIcon, Loader2Icon } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import {
   Sheet,
   SheetClose,
@@ -9,9 +9,9 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet";
-import { useGetPatient } from "@/features/patients/hooks/getPatient";
-import EditPatientInfo from "./EditPatientInfo";
+} from '@/components/ui/sheet';
+import { useGetPatient } from '@/features/patients/hooks/getPatient';
+import EditPatientInfo from './EditPatientInfo';
 
 interface Props {
   patientId: number;
@@ -37,7 +37,7 @@ const PatientInfoSheet = ({ patientId }: Props) => {
             </SheetDescription>
           </div>
           <SheetClose asChild>
-            <Button variant="outline" size="sm" className="min-w-[150px]">
+            <Button className="min-w-[150px]" size="sm" variant="outline">
               Close
             </Button>
           </SheetClose>

@@ -1,9 +1,9 @@
-import { User2Icon } from "lucide-react";
+import { User2Icon } from 'lucide-react';
 
-import type { SidebarItems } from "@/types/sidebar";
+import type { SidebarItems } from '@/types/sidebar';
 
 export const patientSidebarItems: SidebarItems = {
   icon: <User2Icon />,
-  title: "Patients",
-  url: "/",
+  title: 'Patients',
+  url: '/',
 };

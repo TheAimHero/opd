@@ -1,7 +1,7 @@
 import { RPCHandler } from '@orpc/server/fetch';
+import type { Context, Next } from 'hono';
 import { getSession } from '@/lib/context';
 import { appRouter } from '.';
-import type { Context, Next } from 'hono';
 
 const handler = new RPCHandler(appRouter);
 

@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import CreatePatient from "@/features/patients/components/CreatePatient";
-import PatientList from "@/features/patients/components/PatientList";
-import PatientSearch from "@/features/patients/components/PatientSearch";
+} from '@/components/ui/dialog';
+import CreatePatient from '@/features/patients/components/CreatePatient';
+import PatientList from '@/features/patients/components/PatientList';
+import PatientSearch from '@/features/patients/components/PatientSearch';
 
 export default function Home() {
   return (

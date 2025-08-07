@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { config } from "@madhuprema/db_schema/patient";
-import { createPatient } from "@madhuprema/schema/patient";
-import { useQueryClient } from "@tanstack/react-query";
-import { useForm } from "react-hook-form";
-import { toast } from "sonner";
-import type { z } from "zod";
-import SelectInput from "@/components/form-inputs/OptionInput";
-import StringInput from "@/components/form-inputs/StringInput";
-import TextAreaInput from "@/components/form-inputs/TextareaInput";
-import NlpDatePickerInput from "@/components/NlpDatePicker";
-import { Button } from "@/components/ui/button";
-import { Form } from "@/components/ui/form";
-import { useCreatePatient } from "@/features/patients/hooks/createPatient";
-import { formatLongIndianDate } from "@/lib/date";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { config } from '@opd/db_schema/patient';
+import { createPatient } from '@opd/schema/patient';
+import { useQueryClient } from '@tanstack/react-query';
+import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
+import type { z } from 'zod';
+import SelectInput from '@/components/form-inputs/OptionInput';
+import StringInput from '@/components/form-inputs/StringInput';
+import TextAreaInput from '@/components/form-inputs/TextareaInput';
+import NlpDatePickerInput from '@/components/NlpDatePicker';
+import { Button } from '@/components/ui/button';
+import { Form } from '@/components/ui/form';
+import { useCreatePatient } from '@/features/patients/hooks/createPatient';
+import { formatLongIndianDate } from '@/lib/date';
 
 const formSchema = createPatient.createPatientReqBody;
 
@@ -24,20 +24,20 @@ const CreatePatient = () => {
   const { mutate: createPatient, isPending: isCreatePatientPending } =
     useCreatePatient({
       onSuccess: () => {
-        void queryClient.invalidateQueries({ queryKey: ["patient"] });
-        toast.success("Patient created successfully");
+        void queryClient.invalidateQueries({ queryKey: ['patient'] });
+        toast.success('Patient created successfully');
       },
       onError: () => {
-        toast.error("Something went wrong");
+        toast.error('Something went wrong');
       },
     });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
-      phoneNumber: "",
-      address: "",
+      name: '',
+      phoneNumber: '',
+      address: '',
       birthDate: undefined,
       bloodGroup: undefined,
       sex: undefined,
@@ -50,11 +50,11 @@ const CreatePatient = () => {
 
   function onReset() {
     form.reset({
-      address: "",
+      address: '',
       birthDate: undefined,
       bloodGroup: undefined,
-      name: "",
-      phoneNumber: "",
+      name: '',
+      phoneNumber: '',
       sex: undefined,
     });
     form.clearErrors();

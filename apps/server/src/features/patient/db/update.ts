@@ -14,6 +14,8 @@ export const updatePatientDb = async (
     .set(patientData)
     .where(eq(dbSchema.patientTable.id, patientData.id))
     .returning();
-  if (!patient) throw new Error('Patient not updated');
+  if (!patient) {
+    throw new Error('Patient not updated');
+  }
   return patient;
 };

@@ -1,5 +1,5 @@
-import CreateMedicine from "@/features/medicine/components/CreateMedicine";
-import MedicineList from "@/features/medicine/components/MedicineList";
+import CreateMedicine from '@/features/medicine/components/CreateMedicine';
+import MedicineList from '@/features/medicine/components/MedicineList';
 
 const Page = () => {
   return (

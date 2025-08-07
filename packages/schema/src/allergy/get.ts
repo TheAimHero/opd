@@ -1,5 +1,5 @@
-import { schema } from "@opd/db_schema/allergy";
-import z from "zod";
+import { schema } from '@opd/db_schema/allergy';
+import z from 'zod';
 
 export const getAllergyReqParams = z.object({ id: z.coerce.number() });
 

@@ -1,5 +1,5 @@
-import { schema } from "@opd/db_schema/patient";
-import z from "zod";
+import { schema } from '@opd/db_schema/patient';
+import z from 'zod';
 
 // get patient
 

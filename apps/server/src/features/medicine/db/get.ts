@@ -30,6 +30,8 @@ export const getMedicineDb = async ({
     .from(dbSchema.medicineTable)
     .where(eq(dbSchema.medicineTable.id, id))
     .limit(1);
-  if (!medicine) throw new Error('Medicine not found');
+  if (!medicine) {
+    throw new Error('Medicine not found');
+  }
   return medicine;
 };

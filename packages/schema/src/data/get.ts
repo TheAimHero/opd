@@ -1,5 +1,5 @@
-import { config, schema } from "@opd/db_schema/data";
-import z from "zod";
+import { config, schema } from '@opd/db_schema/data';
+import z from 'zod';
 
 export const getDataReqParams = z.object({ id: z.coerce.number() });
 

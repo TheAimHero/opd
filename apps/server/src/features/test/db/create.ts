@@ -12,6 +12,8 @@ export const createTestDb = async (
     .insert(dbSchema.testTable)
     .values(testData)
     .returning();
-  if (!test) throw new Error('Test not created');
+  if (!test) {
+    throw new Error('Test not created');
+  }
   return test;
 };

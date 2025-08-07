@@ -1,6 +1,6 @@
-import type { ReactNode } from "react";
-import type { FieldPath, FieldValues, UseFormReturn } from "react-hook-form";
-import Conditional from "@/components/Conditional";
+import type { ReactNode } from 'react';
+import type { FieldPath, FieldValues, UseFormReturn } from 'react-hook-form';
+import Conditional from '@/components/Conditional';
 import {
   FormControl,
   FormDescription,
@@ -8,9 +8,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { cn } from '@/lib/utils';
 
 interface Props<T extends FieldValues> {
   form: UseFormReturn<T>;
@@ -38,7 +38,7 @@ const StringInput = <T extends FieldValues>({
       control={form.control}
       name={name}
       render={({ field }) => (
-        <FormItem className={cn("", className)}>
+        <FormItem className={cn('', className)}>
           <FormLabel className="capitalize">{label}</FormLabel>
           <FormControl>
             <div className="relative flex items-center rounded-md border px-2 focus-within:ring-1 focus-within:ring-ring">

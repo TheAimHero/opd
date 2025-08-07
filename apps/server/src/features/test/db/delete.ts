@@ -13,6 +13,8 @@ export const deleteTestDb = async ({
     .delete(dbSchema.testTable)
     .where(eq(dbSchema.testTable.id, id))
     .returning();
-  if (!test) throw new Error('Test not found');
+  if (!test) {
+    throw new Error('Test not found');
+  }
   return test;
 };

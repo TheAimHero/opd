@@ -12,6 +12,8 @@ export const createDataDb = async (
     .insert(dbSchema.dataTable)
     .values(configData)
     .returning();
-  if (!data) throw new Error('Data not created');
+  if (!data) {
+    throw new Error('Data not created');
+  }
   return data;
 };

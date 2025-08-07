@@ -11,7 +11,7 @@ export const getAllPatientDb = async (
   req: z.infer<typeof getAllPatientReqQuery>
 ) => {
   const userId = isWithinPostgresIntegerRange(req.search)
-    ? Number.parseInt(req.search || '')
+    ? Number.parseInt(req.search || '', 10)
     : undefined;
   const patient = await db
     .select()
@@ -40,6 +40,8 @@ export const getPatientDb = async ({
     .from(dbSchema.patientTable)
     .where(eq(dbSchema.patientTable.id, id))
     .limit(1);
-  if (!patient) throw new Error('Patient not found');
+  if (!patient) {
+    throw new Error('Patient not found');
+  }
   return patient;
 };

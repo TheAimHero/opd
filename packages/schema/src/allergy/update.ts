@@ -1,4 +1,4 @@
-import { schema } from "@opd/db_schema/allergy";
+import { schema } from '@opd/db_schema/allergy';
 
 export const updateAllergyReqBody = schema.allergyUpdateSchema;
 

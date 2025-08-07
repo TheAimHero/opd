@@ -1,9 +1,9 @@
-import { StethoscopeIcon } from "lucide-react";
+import { StethoscopeIcon } from 'lucide-react';
 
-import type { SidebarItems } from "@/types/sidebar";
+import type { SidebarItems } from '@/types/sidebar';
 
 export const testSidebarItems: SidebarItems = {
   icon: <StethoscopeIcon />,
-  title: "Test",
-  url: "/test",
+  title: 'Test',
+  url: '/test',
 };

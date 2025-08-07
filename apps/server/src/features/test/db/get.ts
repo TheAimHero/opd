@@ -24,6 +24,8 @@ export const getTestDb = async ({ id }: z.infer<typeof getTestReqParams>) => {
     .from(dbSchema.testTable)
     .where(eq(dbSchema.testTable.id, id))
     .limit(1);
-  if (!test) throw new Error('Test not found');
+  if (!test) {
+    throw new Error('Test not found');
+  }
   return test;
 };

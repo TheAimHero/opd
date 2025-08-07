@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -7,10 +7,10 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { authClient } from "@/lib/auth-client";
-import { Button } from "./ui/button";
-import { Skeleton } from "./ui/skeleton";
+} from '@/components/ui/dropdown-menu';
+import { authClient } from '@/lib/auth-client';
+import { Button } from './ui/button';
+import { Skeleton } from './ui/skeleton';
 
 export default function UserMenu() {
   const router = useRouter();
@@ -44,7 +44,7 @@ export default function UserMenu() {
               authClient.signOut({
                 fetchOptions: {
                   onSuccess: () => {
-                    router.push("/");
+                    router.push('/');
                   },
                 },
               });

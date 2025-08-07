@@ -1,5 +1,5 @@
-import { createSchemaFactory } from "drizzle-zod";
-import { prescribedMedicineTable } from "./db";
+import { createSchemaFactory } from 'drizzle-zod';
+import { prescribedMedicineTable } from './db';
 
 const { createUpdateSchema, createSelectSchema, createInsertSchema } =
   createSchemaFactory({
@@ -7,13 +7,13 @@ const { createUpdateSchema, createSelectSchema, createInsertSchema } =
   });
 
 export const prescribedMedicineInsertSchema = createInsertSchema(
-  prescribedMedicineTable,
+  prescribedMedicineTable
 );
 
 export const prescribedMedicineUpdateSchema = createUpdateSchema(
-  prescribedMedicineTable,
+  prescribedMedicineTable
 );
 
 export const prescribedMedicineSelectSchema = createSelectSchema(
-  prescribedMedicineTable,
+  prescribedMedicineTable
 );

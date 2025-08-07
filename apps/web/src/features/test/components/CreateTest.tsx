@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { createTest } from "@madhuprema/schema/test";
-import { useQueryClient } from "@tanstack/react-query";
-import { useForm } from "react-hook-form";
-import { toast } from "sonner";
-import type z from "zod";
-import StringInput from "@/components/form-inputs/StringInput";
-import { Button } from "@/components/ui/button";
-import { Form } from "@/components/ui/form";
-import { useCreateTest } from "@/features/test/hooks/createTest";
-import { cn } from "@/lib/utils";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { createTest } from '@opd/schema/test';
+import { useQueryClient } from '@tanstack/react-query';
+import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
+import type z from 'zod';
+import StringInput from '@/components/form-inputs/StringInput';
+import { Button } from '@/components/ui/button';
+import { Form } from '@/components/ui/form';
+import { useCreateTest } from '@/features/test/hooks/createTest';
+import { cn } from '@/lib/utils';
 
 const formSchema = createTest.createTestReqBody;
 
@@ -22,17 +22,17 @@ const CreateTest = ({ className }: Props) => {
   const queryClient = useQueryClient();
 
   const form = useForm<z.infer<typeof formSchema>>({
-    defaultValues: { name: "" },
+    defaultValues: { name: '' },
     resolver: zodResolver(formSchema),
   });
 
   const { mutate: createTest, isPending: isCreateTestPending } = useCreateTest({
     onSuccess: () => {
-      void queryClient.invalidateQueries({ queryKey: ["test"] });
-      toast.success("Test created successfully");
+      void queryClient.invalidateQueries({ queryKey: ['test'] });
+      toast.success('Test created successfully');
     },
     onError: () => {
-      toast.error("Something went wrong");
+      toast.error('Something went wrong');
     },
   });
 
@@ -48,7 +48,7 @@ const CreateTest = ({ className }: Props) => {
     <div>
       <Form {...form}>
         <form
-          className={cn("mx-auto flex max-w-md flex-col gap-4", className)}
+          className={cn('mx-auto flex max-w-md flex-col gap-4', className)}
           onReset={onReset}
           onSubmit={form.handleSubmit(onSubmit)}
         >

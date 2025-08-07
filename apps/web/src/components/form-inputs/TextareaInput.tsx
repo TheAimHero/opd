@@ -1,5 +1,5 @@
-import type { FieldPath, FieldValues, UseFormReturn } from "react-hook-form";
-import Conditional from "@/components/Conditional";
+import type { FieldPath, FieldValues, UseFormReturn } from 'react-hook-form';
+import Conditional from '@/components/Conditional';
 import {
   FormControl,
   FormDescription,
@@ -7,9 +7,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Textarea } from "@/components/ui/textarea";
-import { cn } from "@/lib/utils";
+} from '@/components/ui/form';
+import { Textarea } from '@/components/ui/textarea';
+import { cn } from '@/lib/utils';
 
 interface Props<T extends FieldValues> {
   form: UseFormReturn<T>;
@@ -33,7 +33,7 @@ const TextAreaInput = <T extends FieldValues>({
       control={form.control}
       name={name}
       render={({ field }) => (
-        <FormItem className={cn("", className)}>
+        <FormItem className={cn('', className)}>
           <Conditional condition={!!label}>
             <FormLabel className="capitalize">{label}</FormLabel>
           </Conditional>

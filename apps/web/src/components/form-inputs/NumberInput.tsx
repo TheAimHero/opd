@@ -1,5 +1,5 @@
-import type { FieldPath, FieldValues, UseFormReturn } from "react-hook-form";
-import Conditional from "@/components/Conditional";
+import type { FieldPath, FieldValues, UseFormReturn } from 'react-hook-form';
+import Conditional from '@/components/Conditional';
 import {
   FormControl,
   FormDescription,
@@ -7,9 +7,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { cn } from '@/lib/utils';
 
 interface Props<T extends FieldValues> {
   form: UseFormReturn<T>;
@@ -33,14 +33,14 @@ const NumberInput = <T extends FieldValues>({
       control={form.control}
       name={name}
       render={({ field }) => (
-        <FormItem className={cn("", className)}>
+        <FormItem className={cn('', className)}>
           <FormLabel className="capitalize">{label}</FormLabel>
           <FormControl>
             <Input
               placeholder={placeholder}
               type="number"
               {...field}
-              value={field.value || ""}
+              value={field.value || ''}
             />
           </FormControl>
           <Conditional condition={!!description}>

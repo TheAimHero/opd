@@ -1,9 +1,9 @@
-import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
-import type { FieldPath, FieldValues, UseFormReturn } from "react-hook-form";
-import Conditional from "@/components/Conditional";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
+import { format } from 'date-fns';
+import { CalendarIcon } from 'lucide-react';
+import type { FieldPath, FieldValues, UseFormReturn } from 'react-hook-form';
+import Conditional from '@/components/Conditional';
+import { Button } from '@/components/ui/button';
+import { Calendar } from '@/components/ui/calendar';
 import {
   FormControl,
   FormDescription,
@@ -11,13 +11,13 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
+} from '@/components/ui/form';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
-import { cn } from "@/lib/utils";
+} from '@/components/ui/popover';
+import { cn } from '@/lib/utils';
 
 interface Props<T extends FieldValues> {
   form: UseFormReturn<T>;
@@ -40,20 +40,20 @@ const DateInput = <T extends FieldValues>({
       control={form.control}
       name={name}
       render={({ field }) => (
-        <FormItem className={cn("flex flex-col", className)}>
+        <FormItem className={cn('flex flex-col', className)}>
           <FormLabel className="capitalize">{label}</FormLabel>
           <Popover>
             <PopoverTrigger asChild>
               <FormControl>
                 <Button
                   className={cn(
-                    "w-full pl-3 text-left font-normal",
-                    !field.value && "text-muted-foreground",
+                    'w-full pl-3 text-left font-normal',
+                    !field.value && 'text-muted-foreground'
                   )}
-                  variant={"outline"}
+                  variant={'outline'}
                 >
                   {field.value ? (
-                    format(field.value, "PPP")
+                    format(field.value, 'PPP')
                   ) : (
                     <span>Pick a date</span>
                   )}

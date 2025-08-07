@@ -30,6 +30,8 @@ export const getSurgeryDb = async ({
     .from(dbSchema.surgeryTable)
     .where(eq(dbSchema.surgeryTable.id, id))
     .limit(1);
-  if (!surgery) throw new Error('Surgery not found');
+  if (!surgery) {
+    throw new Error('Surgery not found');
+  }
   return surgery;
 };

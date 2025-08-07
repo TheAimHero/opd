@@ -1,30 +1,28 @@
-import { createVisit } from "@madhuprema/schema/visit";
-import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
-import type z from "zod";
-import { env } from "@/env";
+import { createVisit } from '@opd/schema/visit';
+import { useMutation } from '@tanstack/react-query';
+import axios from 'axios';
+import type z from 'zod';
+import { env } from '@/env';
 
 type Visit = z.infer<typeof createVisit.createVisitReqBody>;
 
 const createVisitFn = async (body: Visit) => {
   try {
-    const url = new URL("/visit", env.NEXT_PUBLIC_SERVER_URL);
+    const url = new URL('/visit', env.NEXT_PUBLIC_SERVER_URL);
     const res = await axios.post(url.toString(), body, {
       headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
       },
     });
-    console.log("pre-parse", res.data);
     const visit = createVisit.createVisitRes.parse(res.data);
-    console.log("post-parse", res.data);
     return visit;
   } catch (e) {
     if (axios.isAxiosError(e)) {
       throw new Error(
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         e.response?.data?.error as string,
-        { cause: e },
+        { cause: e }
       );
     }
     throw e;
@@ -44,10 +42,10 @@ export const useCreateVisit = ({
 }: Actions = {}) => {
   const visit = useMutation({
     mutationFn: createVisitFn,
-    mutationKey: ["visit"],
-    onError: onError,
-    onSettled: onSettled,
-    onSuccess: onSuccess,
+    mutationKey: ['visit'],
+    onError,
+    onSettled,
+    onSuccess,
   });
   return visit;
 };

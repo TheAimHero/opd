@@ -1,4 +1,4 @@
-import { schema } from "@opd/db_schema/patient";
+import { schema } from '@opd/db_schema/patient';
 
 export const createPatientReqBody = schema.patientInsertSchema.omit({
   id: true,

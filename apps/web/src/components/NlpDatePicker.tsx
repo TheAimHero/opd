@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import { parseDate } from "chrono-node/uk";
-import { CalendarIcon } from "lucide-react";
-import { type ReactNode, useEffect, useState } from "react";
-import type { FieldPath, FieldValues, UseFormReturn } from "react-hook-form";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
-import { Input } from "@/components/ui/input";
+import { parseDate } from 'chrono-node/uk';
+import { CalendarIcon } from 'lucide-react';
+import { type ReactNode, useEffect, useState } from 'react';
+import type { FieldPath, FieldValues, UseFormReturn } from 'react-hook-form';
+import { Button } from '@/components/ui/button';
+import { Calendar } from '@/components/ui/calendar';
+import { Input } from '@/components/ui/input';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
-import { formatShortIndianDate } from "@/lib/date";
-import { cn } from "@/lib/utils";
-import Conditional from "./Conditional";
+} from '@/components/ui/popover';
+import { formatShortIndianDate } from '@/lib/date';
+import { cn } from '@/lib/utils';
+import Conditional from './Conditional';
 import {
   FormControl,
   FormDescription,
@@ -22,17 +22,17 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "./ui/form";
+} from './ui/form';
 
 function formatDate(date: Date | undefined) {
   if (!date) {
-    return "";
+    return '';
   }
 
-  return date.toLocaleDateString("en-IN", {
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
+  return date.toLocaleDateString('en-IN', {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric',
   });
 }
 
@@ -58,27 +58,28 @@ const NlpDatePickerInput = <T extends FieldValues>({
   const [open, setOpen] = useState(false);
 
   const [value, setValue] = useState<string>(
-    formatShortIndianDate(form.getValues(name)),
+    formatShortIndianDate(form.getValues(name))
   );
   const [month, setMonth] = useState<Date | undefined>(form.getValues(name));
 
   useEffect(() => {
     setValue(formatShortIndianDate(form.getValues(name)));
     setValue(formatShortIndianDate(form.getValues(name)));
-  }, [form.getValues(name)]);
+  }, [form.getValues, name]);
 
   return (
     <FormField
       control={form.control}
       name={name}
       render={({ field }) => (
-        <FormItem className={cn("", className)}>
+        <FormItem className={cn('', className)}>
           <FormLabel className="capitalize">{label}</FormLabel>
           <FormControl>
             <div>
               <div className="relative flex gap-2">
                 <Input
                   className="bg-background pr-10"
+                  defaultValue={value}
                   id="date"
                   onChange={(e) => {
                     setValue(e.target.value);
@@ -89,13 +90,12 @@ const NlpDatePickerInput = <T extends FieldValues>({
                     }
                   }}
                   onKeyDown={(e) => {
-                    if (e.key === "ArrowDown") {
+                    if (e.key === 'ArrowDown') {
                       e.preventDefault();
                       setOpen(true);
                     }
                   }}
                   placeholder={placeholder}
-                  defaultValue={value}
                 />
                 <Popover onOpenChange={setOpen} open={open}>
                   <PopoverTrigger asChild>

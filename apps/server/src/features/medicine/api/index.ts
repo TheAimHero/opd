@@ -1,7 +1,7 @@
+import { Hono } from 'hono';
 import { createMedicineHandler } from './create';
 import { deleteMedicineHandler } from './delete';
 import { getAllMedicineHandler, getMedicineHandler } from './get';
-import { Hono } from 'hono';
 
 const router = new Hono();
 

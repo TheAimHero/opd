@@ -1,4 +1,4 @@
-import { schema } from "@opd/db_schema/visit";
+import { schema } from '@opd/db_schema/visit';
 
 export const updateVisitReqBody = schema.visitUpdateSchema;
 

@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import type { getTest } from "@madhuprema/schema/test";
-import { useQueryClient } from "@tanstack/react-query";
+import type { getTest } from '@opd/schema/test';
+import { useQueryClient } from '@tanstack/react-query';
 import {
   type ColumnDef,
   getCoreRowModel,
@@ -9,54 +9,54 @@ import {
   getPaginationRowModel,
   type PaginationState,
   useReactTable,
-} from "@tanstack/react-table";
-import { Trash2Icon } from "lucide-react";
-import { useState } from "react";
-import { toast } from "sonner";
-import { useDebounceValue } from "usehooks-ts";
-import type z from "zod";
-import StatefulTable from "@/components/table/StatefulTable";
-import { Button } from "@/components/ui/button";
-import { useDeleteTest } from "@/features/test/hooks/deleteTest";
-import { useGetAllTest } from "@/features/test/hooks/getAllTest";
-import { cn } from "@/lib/utils";
+} from '@tanstack/react-table';
+import { Trash2Icon } from 'lucide-react';
+import { useState } from 'react';
+import { toast } from 'sonner';
+import { useDebounceValue } from 'usehooks-ts';
+import type z from 'zod';
+import StatefulTable from '@/components/table/StatefulTable';
+import { Button } from '@/components/ui/button';
+import { useDeleteTest } from '@/features/test/hooks/deleteTest';
+import { useGetAllTest } from '@/features/test/hooks/getAllTest';
+import { cn } from '@/lib/utils';
 
 type TestType = z.infer<typeof getTest.getAllTestRes>[number];
 
 const columns: ColumnDef<TestType>[] = [
   {
-    accessorKey: "name",
-    id: "name",
-    header: "Name",
+    accessorKey: 'name',
+    id: 'name',
+    header: 'Name',
     cell: ({ row }) => <span className="capitalize">{row.original.name}</span>,
-    filterFn: "includesString",
+    filterFn: 'includesString',
     size: 100,
   },
   {
-    id: "deleteTest",
-    header: "Delete Test",
-    cell: function Cell({ row }) {
+    id: 'deleteTest',
+    header: 'Delete Test',
+    cell({ row }) {
       const queryClient = useQueryClient();
       const { mutate: deleteTest } = useDeleteTest(
         { id: row.original.id },
         {
           onSettled: (data) => {
             if (data) {
-              toast.success("Test deleted successfully");
-              void queryClient.invalidateQueries({ queryKey: ["test"] });
+              toast.success('Test deleted successfully');
+              void queryClient.invalidateQueries({ queryKey: ['test'] });
               return;
             }
-            toast.error("Something went wrong");
+            toast.error('Something went wrong');
           },
-        },
+        }
       );
       return (
         <Button
+          className="text-destructive capitalize hover:bg-destructive/40 hover:text-black"
           onClick={() => deleteTest()}
           size="icon"
-          variant="ghost"
           type="button"
-          className="text-destructive capitalize hover:bg-destructive/40 hover:text-black"
+          variant="ghost"
         >
           <Trash2Icon />
         </Button>
@@ -74,7 +74,7 @@ const TestList = ({ className }: Props) => {
     pageIndex: 0,
     pageSize: 19,
   });
-  const [globalFilter, setGlobalFilter] = useState<string>("");
+  const [globalFilter, setGlobalFilter] = useState<string>('');
 
   const [debouncedValue] = useDebounceValue(globalFilter, 500);
 
@@ -86,10 +86,10 @@ const TestList = ({ className }: Props) => {
 
   const table = useReactTable({
     data: test ?? [],
-    columns: columns,
+    columns,
     rowCount: test?.length ?? 0,
 
-    globalFilterFn: "includesString",
+    globalFilterFn: 'includesString',
 
     enableColumnFilters: true, // this is required to be able to filter columns
     enableGlobalFilter: true, // this is required to be able to filter the table
@@ -110,9 +110,9 @@ const TestList = ({ className }: Props) => {
 
   return (
     <StatefulTable
-      className={cn("h-[800px]", className)}
-      onFilterChange={(v) => console.log(v)}
-      onSelectedRowChange={(rows) => console.log(rows.map((r) => r.original))}
+      className={cn('h-[800px]', className)}
+      onFilterChange={(_v) => {}}
+      onSelectedRowChange={(_rows) => {}}
       table={table}
     />
   );

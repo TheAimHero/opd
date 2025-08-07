@@ -1,4 +1,4 @@
-import { schema } from "@opd/db_schema/test";
+import { schema } from '@opd/db_schema/test';
 
 export const updateTestReqBody = schema.testUpdateSchema;
 

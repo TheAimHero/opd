@@ -1,5 +1,5 @@
-import { schema } from "@opd/db_schema/test";
-import { z } from "zod";
+import { schema } from '@opd/db_schema/test';
+import { z } from 'zod';
 
 /**
  * Delete test request schema

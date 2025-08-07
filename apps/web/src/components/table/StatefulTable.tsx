@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
 import {
   flexRender,
   type Row,
   type Table as TableType,
-} from "@tanstack/react-table";
-import { ChevronDownIcon, Loader2Icon } from "lucide-react";
-import { useEffect } from "react";
-import { Button } from "@/components/ui/button";
+} from '@tanstack/react-table';
+import { ChevronDownIcon, Loader2Icon } from 'lucide-react';
+import { useEffect } from 'react';
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
+} from '@/components/ui/dropdown-menu';
+import { Input } from '@/components/ui/input';
 import {
   Table,
   TableBody,
@@ -22,8 +22,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import { cn } from "@/lib/utils";
+} from '@/components/ui/table';
+import { cn } from '@/lib/utils';
 
 /**
  * This is the interface that is used by the snippet and is to be satisfied when using the Snippet after copying it.
@@ -65,7 +65,7 @@ const StatefulTable = <TData,>({
 
   useEffect(() => {
     const selectedTableRows = Object.keys(rowSelection).map((v) =>
-      table.getRow(v),
+      table.getRow(v)
     );
     onSelectedRowChange?.(selectedTableRows);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -74,8 +74,8 @@ const StatefulTable = <TData,>({
   return (
     <div
       className={cn(
-        "relative flex flex-col rounded-md border py-[40px]",
-        className,
+        'relative flex flex-col rounded-md border py-[40px]',
+        className
       )}
     >
       <div className="absolute top-0 flex h-[40px] w-full items-center gap-2 bg-secondary px-4">
@@ -86,7 +86,7 @@ const StatefulTable = <TData,>({
             onFilterChange?.(e.target.value);
           }}
           placeholder="Search..."
-          value={table.getState().globalFilter ?? ""}
+          value={table.getState().globalFilter ?? ''}
         />
 
         <DropdownMenu>
@@ -130,7 +130,7 @@ const StatefulTable = <TData,>({
                       ? null
                       : flexRender(
                           header.column.columnDef.header,
-                          header.getContext(),
+                          header.getContext()
                         )}
                   </TableHead>
                 );
@@ -143,7 +143,7 @@ const StatefulTable = <TData,>({
             table.getRowModel().rows.map((row) => (
               <TableRow
                 className="hover:bg-muted/50"
-                data-state={row.getIsSelected() && "selected"}
+                data-state={row.getIsSelected() && 'selected'}
                 key={row.id}
                 onClick={() => onRowClick?.(row)}
               >
@@ -155,7 +155,7 @@ const StatefulTable = <TData,>({
                     <div className="w-full truncate">
                       {flexRender(
                         cell.column.columnDef.cell,
-                        cell.getContext(),
+                        cell.getContext()
                       )}
                     </div>
                   </TableCell>
@@ -168,10 +168,10 @@ const StatefulTable = <TData,>({
                 {isDataLoading ? (
                   <p className="mx-auto flex flex-col items-center justify-center gap-4">
                     <span>Loading...</span>
-                    <Loader2Icon className={"mx-auto size-4 animate-spin"} />
+                    <Loader2Icon className={'mx-auto size-4 animate-spin'} />
                   </p>
                 ) : (
-                  "No results."
+                  'No results.'
                 )}
               </TableCell>
             </TableRow>
@@ -181,11 +181,11 @@ const StatefulTable = <TData,>({
       {
         <div className="absolute bottom-0 flex h-[40px] w-full items-center justify-between gap-2 border-t bg-secondary px-4">
           <span className="w-full text-balance">
-            Showing {table.getRowModel().rows.length.toLocaleString()} of{" "}
+            Showing {table.getRowModel().rows.length.toLocaleString()} of{' '}
             {table.getRowCount()} Rows
           </span>
           <span className="w-full text-balance">
-            Showing {table.getState().pagination.pageIndex + 1} of{" "}
+            Showing {table.getState().pagination.pageIndex + 1} of{' '}
             {table.getPageCount() || 1} Pages
           </span>
           <div className="flex flex-row gap-2">

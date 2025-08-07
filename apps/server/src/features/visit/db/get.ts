@@ -43,6 +43,8 @@ export const getVisitDb = async ({ id }: z.infer<typeof getVisitReqParams>) => {
     orderBy: desc(dbSchema.visitTable.createdAt),
     with: { medicine: true, test: true },
   });
-  if (!visit) throw new Error('Visit not found');
+  if (!visit) {
+    throw new Error('Visit not found');
+  }
   return visit;
 };

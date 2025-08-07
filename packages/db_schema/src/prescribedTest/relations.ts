@@ -1,7 +1,7 @@
-import { relations } from "drizzle-orm";
-import { testTable } from "../test/db";
-import { visitTable } from "../visit/db";
-import { prescribedTestTable } from "./db";
+import { relations } from 'drizzle-orm';
+import { testTable } from '../test/db';
+import { visitTable } from '../visit/db';
+import { prescribedTestTable } from './db';
 
 export const prescribedTestRelations = relations(
   prescribedTestTable,
@@ -15,5 +15,5 @@ export const prescribedTestRelations = relations(
       fields: [prescribedTestTable.testId],
       references: [testTable.id],
     }),
-  }),
+  })
 );

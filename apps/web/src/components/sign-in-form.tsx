@@ -1,12 +1,12 @@
-import { useForm } from "@tanstack/react-form";
-import { Loader2Icon } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { toast } from "sonner";
-import z from "zod";
-import { authClient } from "@/lib/auth-client";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import { Label } from "./ui/label";
+import { useForm } from '@tanstack/react-form';
+import { Loader2Icon } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
+import z from 'zod';
+import { authClient } from '@/lib/auth-client';
+import { Button } from './ui/button';
+import { Input } from './ui/input';
+import { Label } from './ui/label';
 
 export default function SignInForm() {
   const router = useRouter();
@@ -14,27 +14,27 @@ export default function SignInForm() {
 
   const form = useForm({
     defaultValues: {
-      username: "",
-      password: "",
+      username: '',
+      password: '',
     },
     onSubmit: async ({ value }) => {
       await authClient.signIn.username(
         { username: value.username, password: value.password },
         {
           onSuccess: () => {
-            router.push("/dashboard");
-            toast.success("Sign in successful");
+            router.push('/dashboard');
+            toast.success('Sign in successful');
           },
           onError: (error) => {
             toast.error(error.error.message);
           },
-        },
+        }
       );
     },
     validators: {
       onSubmit: z.object({
-        username: z.string().min(5, "Username must be at least 5 characters"),
-        password: z.string().min(8, "Password must be at least 8 characters"),
+        username: z.string().min(5, 'Username must be at least 5 characters'),
+        password: z.string().min(8, 'Password must be at least 8 characters'),
       }),
     },
   });
@@ -112,7 +112,7 @@ export default function SignInForm() {
               disabled={!state.canSubmit || state.isSubmitting}
               type="submit"
             >
-              {state.isSubmitting ? "Submitting..." : "Sign In"}
+              {state.isSubmitting ? 'Submitting...' : 'Sign In'}
             </Button>
           )}
         </form.Subscribe>

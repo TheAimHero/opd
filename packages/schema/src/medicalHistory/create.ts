@@ -1,4 +1,4 @@
-import { schema } from "@opd/db_schema/me";
+import { schema } from '@opd/db_schema/me';
 
 export const createMedicalHistoryReqBody = schema.medicalHistoryInsertSchema;
 

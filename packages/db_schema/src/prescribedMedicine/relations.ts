@@ -1,7 +1,7 @@
-import { relations } from "drizzle-orm";
-import { medicineTable } from "../medicine/db";
-import { visitTable } from "../visit/db";
-import { prescribedMedicineTable } from "./db";
+import { relations } from 'drizzle-orm';
+import { medicineTable } from '../medicine/db';
+import { visitTable } from '../visit/db';
+import { prescribedMedicineTable } from './db';
 
 export const prescribedMedicineRelations = relations(
   prescribedMedicineTable,
@@ -15,5 +15,5 @@ export const prescribedMedicineRelations = relations(
       fields: [prescribedMedicineTable.medicineId],
       references: [medicineTable.id],
     }),
-  }),
+  })
 );

@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { createSurgery } from "@madhuprema/schema/surgery";
-import { useQueryClient } from "@tanstack/react-query";
-import { useForm } from "react-hook-form";
-import { toast } from "sonner";
-import type z from "zod";
-import StringInput from "@/components/form-inputs/StringInput";
-import { Button } from "@/components/ui/button";
-import { Form } from "@/components/ui/form";
-import { useCreateSurgery } from "@/features/surgery/hooks/createSurgery";
-import { cn } from "@/lib/utils";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { createSurgery } from '@opd/schema/surgery';
+import { useQueryClient } from '@tanstack/react-query';
+import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
+import type z from 'zod';
+import StringInput from '@/components/form-inputs/StringInput';
+import { Button } from '@/components/ui/button';
+import { Form } from '@/components/ui/form';
+import { useCreateSurgery } from '@/features/surgery/hooks/createSurgery';
+import { cn } from '@/lib/utils';
 
 const formSchema = createSurgery.createSurgeryReqBody;
 
@@ -23,7 +23,7 @@ const CreateSurgery = ({ className }: Props) => {
 
   const form = useForm<z.infer<typeof formSchema>>({
     defaultValues: {
-      name: "",
+      name: '',
     },
     resolver: zodResolver(formSchema),
   });
@@ -31,11 +31,11 @@ const CreateSurgery = ({ className }: Props) => {
   const { mutate: createSurgery, isPending: isCreateSurgeryPending } =
     useCreateSurgery({
       onSuccess: () => {
-        void queryClient.invalidateQueries({ queryKey: ["surgery"] });
-        toast.success("Surgery created successfully");
+        void queryClient.invalidateQueries({ queryKey: ['surgery'] });
+        toast.success('Surgery created successfully');
       },
       onError: () => {
-        toast.error("Something went wrong");
+        toast.error('Something went wrong');
       },
     });
 
@@ -51,7 +51,7 @@ const CreateSurgery = ({ className }: Props) => {
     <div>
       <Form {...form}>
         <form
-          className={cn("mx-auto flex max-w-md flex-col gap-4", className)}
+          className={cn('mx-auto flex max-w-md flex-col gap-4', className)}
           onReset={onReset}
           onSubmit={form.handleSubmit(onSubmit)}
         >

@@ -1,18 +1,18 @@
-import { updatePatient } from "@madhuprema/schema/patient";
-import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
-import type z from "zod";
-import { env } from "@/env";
+import { updatePatient } from '@opd/schema/patient';
+import { useMutation } from '@tanstack/react-query';
+import axios from 'axios';
+import type z from 'zod';
+import { env } from '@/env';
 
 type Patient = z.infer<typeof updatePatient.updatePatientReqBody>;
 
 const updatePatientFn = async (body: Patient) => {
   try {
-    const url = new URL("/patient", env.NEXT_PUBLIC_SERVER_URL);
+    const url = new URL('/patient', env.NEXT_PUBLIC_SERVER_URL);
     const res = await axios.patch(url.toString(), body, {
       headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
       },
     });
     return updatePatient.updatePatientRes.parse(res.data);
@@ -21,7 +21,7 @@ const updatePatientFn = async (body: Patient) => {
       throw new Error(
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         e.response?.data?.error as string,
-        { cause: e },
+        { cause: e }
       );
     }
     throw e;
@@ -41,10 +41,10 @@ export const useUpdatePatient = ({
 }: Actions = {}) => {
   const patient = useMutation({
     mutationFn: updatePatientFn,
-    mutationKey: ["patient"],
-    onError: onError,
-    onSettled: onSettled,
-    onSuccess: onSuccess,
+    mutationKey: ['patient'],
+    onError,
+    onSettled,
+    onSuccess,
   });
   return patient;
 };

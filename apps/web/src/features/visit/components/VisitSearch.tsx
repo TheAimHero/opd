@@ -1,24 +1,24 @@
-import { useAtom, useSetAtom } from "jotai";
-import { ChevronDownIcon, SearchIcon } from "lucide-react";
-import { useEffect, useState } from "react";
-import { useDebounceValue } from "usehooks-ts";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { useAtom, useSetAtom } from 'jotai';
+import { ChevronDownIcon, SearchIcon } from 'lucide-react';
+import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { useDebounceValue } from 'usehooks-ts';
+import { Button } from '@/components/ui/button';
+import { Calendar } from '@/components/ui/calendar';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
-import { dateRangeAtom, searchAtom } from "@/features/visit/state/search";
-import { useSearchParams } from "next/navigation";
+} from '@/components/ui/popover';
+import { dateRangeAtom, searchAtom } from '@/features/visit/state/search';
 
 const VisitSearch = () => {
-  const search = useSearchParams().get("search");
+  const _search = useSearchParams().get('search');
 
   const setSearchTerm = useSetAtom(searchAtom);
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('');
   const [range, setRange] = useAtom(dateRangeAtom);
 
   const [debouncedValue] = useDebounceValue(inputValue, 500);
@@ -40,30 +40,30 @@ const VisitSearch = () => {
         />
       </div>
       <div className="flex gap-3">
-        <Label htmlFor="dates" className="text-nowrap px-1">
+        <Label className="text-nowrap px-1" htmlFor="dates">
           Visit Date Range
         </Label>
         <Popover>
           <PopoverTrigger asChild>
             <Button
-              variant="outline"
-              id="dates"
               className="w-56 justify-between font-normal"
+              id="dates"
+              variant="outline"
             >
               {range?.from && range?.to
                 ? `${range.from.toLocaleDateString()} - ${range.to.toLocaleDateString()}`
-                : "Select date"}
+                : 'Select date'}
               <ChevronDownIcon />
             </Button>
           </PopoverTrigger>
-          <PopoverContent className="w-auto overflow-hidden p-0" align="start">
+          <PopoverContent align="start" className="w-auto overflow-hidden p-0">
             <Calendar
-              mode="range"
-              selected={range}
               captionLayout="dropdown"
+              mode="range"
               onSelect={(range) => {
                 setRange(range);
               }}
+              selected={range}
             />
           </PopoverContent>
         </Popover>

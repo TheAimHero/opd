@@ -1,5 +1,5 @@
-import { schema } from "@opd/db_schema/data";
-import { z } from "zod";
+import { schema } from '@opd/db_schema/data';
+import { z } from 'zod';
 
 /**
  * Delete data request schema

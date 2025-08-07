@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import VisitList from "@/features/visit/components/VisitList";
-import VisitSearch from "@/features/visit/components/VisitSearch";
+import VisitList from '@/features/visit/components/VisitList';
+import VisitSearch from '@/features/visit/components/VisitSearch';
 
 export default function Home() {
   return (

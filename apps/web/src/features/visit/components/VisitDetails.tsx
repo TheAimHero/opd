@@ -1,18 +1,18 @@
-import { Loader2Icon } from "lucide-react";
-import type { ReactNode } from "react";
+import { Loader2Icon } from 'lucide-react';
+import type { ReactNode } from 'react';
 import {
   DescriptionDetail,
   DescriptionGroup,
   DescriptionTerm,
-} from "@/components/ui/description-list";
-import { Separator } from "@/components/ui/separator";
-import PrescribedMedicineTable from "@/features/medicine/components/PrescribedMedicineTable";
-import PatientCard from "@/features/patients/components/PatientCard";
-import PrescribedTestTable from "@/features/test/components/PrescribedTestTable";
-import { useGetVisit } from "@/features/visit/hooks/getVisit";
-import { formatLongIndianDate } from "@/lib/date";
-import { cn } from "@/lib/utils";
-import PrintVisit from "./PrintVisit";
+} from '@/components/ui/description-list';
+import { Separator } from '@/components/ui/separator';
+import PrescribedMedicineTable from '@/features/medicine/components/PrescribedMedicineTable';
+import PatientCard from '@/features/patients/components/PatientCard';
+import PrescribedTestTable from '@/features/test/components/PrescribedTestTable';
+import { useGetVisit } from '@/features/visit/hooks/getVisit';
+import { formatLongIndianDate } from '@/lib/date';
+import { cn } from '@/lib/utils';
+import PrintVisit from './PrintVisit';
 
 interface Props {
   visitId: number;
@@ -29,9 +29,9 @@ const VisitDetail = ({
   className?: string;
 }) => {
   return (
-    <DescriptionGroup className={cn("", className)}>
+    <DescriptionGroup className={cn('', className)}>
       <DescriptionTerm>{label}</DescriptionTerm>
-      <DescriptionDetail>{value || ""}</DescriptionDetail>
+      <DescriptionDetail>{value || ''}</DescriptionDetail>
     </DescriptionGroup>
   );
 };
@@ -50,36 +50,36 @@ const VisitDetails = ({ visitId, className }: Props) => {
     );
   }
   return (
-    <div className={cn("flex flex-col gap-4", className)}>
+    <div className={cn('flex flex-col gap-4', className)}>
       <PatientCard patientId={visit.patientId} />
       <div
         className={cn(
-          "grid w-full grid-cols-3 justify-between gap-4",
-          className,
+          'grid w-full grid-cols-3 justify-between gap-4',
+          className
         )}
       >
         <div className="col-span-2 flex flex-col gap-4">
           <div className="grid grid-cols-2 justify-between gap-4">
-            <VisitDetail label="ENT" value={`${visit.ent || ""}`} />
-            <VisitDetail label="Weight" value={`${visit.weight || ""}`} />
+            <VisitDetail label="ENT" value={`${visit.ent || ''}`} />
+            <VisitDetail label="Weight" value={`${visit.weight || ''}`} />
             <VisitDetail
               label="Blood Pressure"
-              value={`${visit.bloodPressure || ""}mmHg`}
+              value={`${visit.bloodPressure || ''}mmHg`}
             />
             <VisitDetail
               label="Pulse"
-              value={`${visit.bloodPressure || ""}bpm`}
+              value={`${visit.bloodPressure || ''}bpm`}
             />
             <VisitDetail
               label="Temperature"
-              value={`${visit.temperature || ""}°F`}
+              value={`${visit.temperature || ''}°F`}
             />
             <VisitDetail
               label="Respiration"
-              value={`${visit.respiration || ""}per min`}
+              value={`${visit.respiration || ''}per min`}
             />
-            <VisitDetail label="CVS" value={`${visit.cvs || ""}`} />
-            <VisitDetail label="Abdomen" value={`${visit.abdomen || ""}`} />
+            <VisitDetail label="CVS" value={`${visit.cvs || ''}`} />
+            <VisitDetail label="Abdomen" value={`${visit.abdomen || ''}`} />
           </div>
 
           <Separator className="col-span-4" />
@@ -87,17 +87,17 @@ const VisitDetails = ({ visitId, className }: Props) => {
           <div className="grid grid-cols-1 gap-4">
             <VisitDetail
               label="Personal Remark"
-              value={visit.personalRemark || "NA"}
+              value={visit.personalRemark || 'NA'}
             />
             <VisitDetail
               label="Doctor's Advice"
-              value={visit.doctorsAdvice || "NA"}
+              value={visit.doctorsAdvice || 'NA'}
             />
-            <VisitDetail label="Complaints" value={visit.complaints || "NA"} />
-            <VisitDetail label="Diagnosis" value={visit.diagnosis || "NA"} />
+            <VisitDetail label="Complaints" value={visit.complaints || 'NA'} />
+            <VisitDetail label="Diagnosis" value={visit.diagnosis || 'NA'} />
             <VisitDetail
               label="Treatment Plan"
-              value={visit.treatmentPlan || "NA"}
+              value={visit.treatmentPlan || 'NA'}
             />
           </div>
           <Separator className="col-span-4" />
@@ -105,7 +105,7 @@ const VisitDetails = ({ visitId, className }: Props) => {
           <div className="">
             <VisitDetail
               label="Follow Up"
-              value={`Next visit scheduled on ${formatLongIndianDate(visit.followUp || "")}`}
+              value={`Next visit scheduled on ${formatLongIndianDate(visit.followUp || '')}`}
             />
           </div>
 
@@ -120,15 +120,15 @@ const VisitDetails = ({ visitId, className }: Props) => {
 
         <div className="col-span-1 flex flex-col gap-2">
           <PrescribedMedicineTable
-            data={visit.medicine ?? []}
             className="col-span-2 h-[200px]"
+            data={visit.medicine ?? []}
           />
 
           <Separator className="col-span-full" />
 
           <PrescribedTestTable
-            data={visit.test ?? []}
             className="col-span-2 h-[200px]"
+            data={visit.test ?? []}
           />
         </div>
       </div>

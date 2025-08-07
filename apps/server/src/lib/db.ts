@@ -1,9 +1,8 @@
-import { neon, neonConfig } from '@neondatabase/serverless';
-import { drizzle } from 'drizzle-orm/neon-http';
 import { env } from 'cloudflare:workers';
+import { neon, neonConfig } from '@neondatabase/serverless';
+import { relations as dbRelations, db as dbTables } from '@opd/db_schema';
+import { drizzle } from 'drizzle-orm/neon-http';
 import ws from 'ws';
-
-import { db as dbTables, relations as dbRelations } from '@opd/db_schema';
 
 neonConfig.webSocketConstructor = ws;
 neonConfig.poolQueryViaFetch = true;

@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { Provider } from "jotai";
-import { useAtomsDevtools } from "jotai-devtools/utils";
-import type { PropsWithChildren } from "react";
+import { Provider } from 'jotai';
+import { useAtomsDevtools } from 'jotai-devtools/utils';
+import type { PropsWithChildren } from 'react';
 
-import NoSSR from "../NoSSR";
+import NoSSR from '../NoSSR';
 
 const DevTools = ({ children }: PropsWithChildren) => {
-  useAtomsDevtools("Jotai");
+  useAtomsDevtools('Jotai');
   return children;
 };
 

@@ -1,9 +1,7 @@
-import dynamic from "next/dynamic";
-import React, { type PropsWithChildren } from "react";
+import dynamic from 'next/dynamic';
+import type { PropsWithChildren } from 'react';
 
-const NoSsr = (props: PropsWithChildren) => (
-  <React.Fragment>{props.children}</React.Fragment>
-);
+const NoSsr = (props: PropsWithChildren) => <>{props.children}</>;
 
 export default dynamic(() => Promise.resolve(NoSsr), {
   ssr: false,

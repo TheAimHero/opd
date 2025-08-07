@@ -1,7 +1,7 @@
-import { User2Icon } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { authClient } from "@/lib/auth-client";
-import AuthButton from "./buttons/LoginButton";
+import { User2Icon } from 'lucide-react';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { authClient } from '@/lib/auth-client';
+import AuthButton from './buttons/LoginButton';
 
 const UserAvatar = () => {
   const { isPending, data } = authClient.useSession();
@@ -23,7 +23,7 @@ const UserAvatar = () => {
       <Avatar>
         <AvatarImage alt={data?.user.username!} src={data?.user.image} />
         <AvatarFallback className="uppercase">
-          {data?.user.displayUsername?.split(" ").slice(0, 2).join(" ")}
+          {data?.user.displayUsername?.split(' ').slice(0, 2).join(' ')}
         </AvatarFallback>
       </Avatar>
       <div className="flex flex-col">

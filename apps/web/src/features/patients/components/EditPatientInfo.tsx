@@ -1,13 +1,13 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { updatePatient } from "@madhuprema/schema/patient";
-import { useForm } from "react-hook-form";
-import { toast } from "sonner";
-import type z from "zod";
-import TextAreaInput from "@/components/form-inputs/TextareaInput";
-import { Button } from "@/components/ui/button";
-import { Form } from "@/components/ui/form";
-import { useGetPatient } from "@/features/patients/hooks/getPatient";
-import { useUpdatePatient } from "../hooks/updatePatient";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { updatePatient } from '@opd/schema/patient';
+import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
+import type z from 'zod';
+import TextAreaInput from '@/components/form-inputs/TextareaInput';
+import { Button } from '@/components/ui/button';
+import { Form } from '@/components/ui/form';
+import { useGetPatient } from '@/features/patients/hooks/getPatient';
+import { useUpdatePatient } from '../hooks/updatePatient';
 
 const { updatePatientReqBody } = updatePatient;
 
@@ -27,29 +27,29 @@ const formSchema = updatePatientReqBody.pick({
 const EditPatientInfo = ({ patientId }: Props) => {
   const form = useForm<z.infer<typeof formSchema>>({
     defaultValues: {
-      allergy: "",
-      familyHistory: "",
-      medicalHistory: "",
-      ongoingMedication: "",
-      pastSurgery: "",
-      systemicDiseases: "",
+      allergy: '',
+      familyHistory: '',
+      medicalHistory: '',
+      ongoingMedication: '',
+      pastSurgery: '',
+      systemicDiseases: '',
     },
     resolver: zodResolver(formSchema),
   });
 
   const { refetch } = useGetPatient(
     { id: patientId },
-    { onSuccess: (data) => form.reset({ ...data }) },
+    { onSuccess: (data) => form.reset({ ...data }) }
   );
 
   const { mutate: updatePatient, isPending: isUpdatePatientPending } =
     useUpdatePatient({
       onSuccess: (data) => {
-        toast.success("Patient updated successfully");
+        toast.success('Patient updated successfully');
         form.reset({ ...data });
       },
       onError: () => {
-        toast.error("Something went wrong");
+        toast.error('Something went wrong');
         refetch();
       },
     });
@@ -73,45 +73,45 @@ const EditPatientInfo = ({ patientId }: Props) => {
 
         <TextAreaInput
           form={form}
-          name="medicalHistory"
           label="Medical History"
+          name="medicalHistory"
           placeholder="Patient Medical History"
         />
 
         <TextAreaInput
           form={form}
-          name="ongoingMedication"
           label="Ongoing Medication"
+          name="ongoingMedication"
           placeholder="Patient Ongoing Medication"
         />
 
         <TextAreaInput
           form={form}
-          name="pastSurgery"
           label="Past Surgery"
+          name="pastSurgery"
           placeholder="Patient Past Surgery"
         />
 
         <TextAreaInput
           form={form}
-          name="familyHistory"
           label="Family History"
+          name="familyHistory"
           placeholder="Patient Family History"
         />
 
         <TextAreaInput
           form={form}
-          name="systemicDiseases"
           label="Systemic Diseases"
+          name="systemicDiseases"
           placeholder="Patient Systemic Diseases"
         />
 
         <div className="flex w-full justify-start gap-2">
           <Button
+            disabled={isUpdatePatientPending}
+            onClick={form.handleSubmit(onSubmit)}
             size="sm"
             type="button"
-            onClick={form.handleSubmit(onSubmit)}
-            disabled={isUpdatePatientPending}
           >
             Update Info
           </Button>

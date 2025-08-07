@@ -1,18 +1,18 @@
-import { createSurgery } from "@madhuprema/schema/surgery";
-import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
-import type z from "zod";
-import { env } from "@/env";
+import { createSurgery } from '@opd/schema/surgery';
+import { useMutation } from '@tanstack/react-query';
+import axios from 'axios';
+import type z from 'zod';
+import { env } from '@/env';
 
 type Surgery = z.infer<typeof createSurgery.createSurgeryReqBody>;
 
 const createSurgeryFn = async (body: Surgery) => {
   try {
-    const url = new URL("/surgery", env.NEXT_PUBLIC_SERVER_URL);
+    const url = new URL('/surgery', env.NEXT_PUBLIC_SERVER_URL);
     const res = await axios.post(url.toString(), body, {
       headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
       },
     });
     return createSurgery.createSurgeryRes.parse(res.data);
@@ -21,7 +21,7 @@ const createSurgeryFn = async (body: Surgery) => {
       throw new Error(
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         e.response?.data?.error as string,
-        { cause: e },
+        { cause: e }
       );
     }
     throw e;
@@ -41,10 +41,10 @@ export const useCreateSurgery = ({
 }: Actions = {}) => {
   const surgery = useMutation({
     mutationFn: createSurgeryFn,
-    mutationKey: ["surgery"],
-    onError: onError,
-    onSettled: onSettled,
-    onSuccess: onSuccess,
+    mutationKey: ['surgery'],
+    onError,
+    onSettled,
+    onSuccess,
   });
   return surgery;
 };

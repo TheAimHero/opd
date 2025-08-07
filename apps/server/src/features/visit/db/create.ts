@@ -1,7 +1,7 @@
 import { db as prescribedMedicineDbSchema } from '@opd/db_schema/prescribedMedicine';
 import { db as prescribedTestDbSchema } from '@opd/db_schema/prescribedTest';
 import { db as visitDbSchema } from '@opd/db_schema/visit';
-import { createVisit } from '@opd/schema/visit';
+import type { createVisit } from '@opd/schema/visit';
 import type { z } from 'zod';
 import { db } from '@/lib/db';
 

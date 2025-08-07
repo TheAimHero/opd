@@ -13,6 +13,8 @@ export const deleteMedicineDb = async ({
     .delete(dbSchema.medicineTable)
     .where(eq(dbSchema.medicineTable.id, id))
     .returning();
-  if (!medicine) throw new Error('Medicine not found');
+  if (!medicine) {
+    throw new Error('Medicine not found');
+  }
   return medicine;
 };

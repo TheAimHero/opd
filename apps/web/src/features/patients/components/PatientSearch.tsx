@@ -1,13 +1,13 @@
-import { useSetAtom } from "jotai";
-import { SearchIcon } from "lucide-react";
-import { useEffect, useState } from "react";
-import { useDebounceValue } from "usehooks-ts";
-import { Input } from "@/components/ui/input";
-import { searchAtom } from "@/features/patients/state/search";
+import { useSetAtom } from 'jotai';
+import { SearchIcon } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { useDebounceValue } from 'usehooks-ts';
+import { Input } from '@/components/ui/input';
+import { searchAtom } from '@/features/patients/state/search';
 
 const PatientSearch = () => {
   const setSearchTerm = useSetAtom(searchAtom);
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('');
   const [debouncedValue] = useDebounceValue(inputValue, 500);
 
   // Update search term only after debounce delay

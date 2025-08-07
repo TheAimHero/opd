@@ -1,8 +1,8 @@
-import type { ReactNode } from "react";
+import type { ReactNode } from 'react';
 
 export type SidebarItems = {
   title: string;
   url: string;
   icon?: ReactNode;
-  items?: Omit<SidebarItems, "items">[];
+  items?: Omit<SidebarItems, 'items'>[];
 };

@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
 import {
   flexRender,
   type Row,
   type Table as TableType,
-} from "@tanstack/react-table";
-import { Loader2Icon } from "lucide-react";
+} from '@tanstack/react-table';
+import { Loader2Icon } from 'lucide-react';
 import {
   Table,
   TableBody,
@@ -13,8 +13,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import { cn } from "@/lib/utils";
+} from '@/components/ui/table';
+import { cn } from '@/lib/utils';
 
 /**
  * This is the interface that is used by the snippet and is to be satisfied when using the Snippet after copying it.
@@ -48,8 +48,8 @@ const SimpleTable = <TData,>({
   return (
     <div
       className={cn(
-        "scrollbar-hidden overflow-x-auto rounded-md border",
-        className,
+        'scrollbar-hidden overflow-x-auto rounded-md border',
+        className
       )}
     >
       <Table className="w-full table-fixed">
@@ -66,7 +66,7 @@ const SimpleTable = <TData,>({
                       ? null
                       : flexRender(
                           header.column.columnDef.header,
-                          header.getContext(),
+                          header.getContext()
                         )}
                   </TableHead>
                 );
@@ -79,7 +79,7 @@ const SimpleTable = <TData,>({
             table.getRowModel().rows.map((row) => (
               <TableRow
                 className="hover:bg-muted"
-                data-state={row.getIsSelected() && "selected"}
+                data-state={row.getIsSelected() && 'selected'}
                 key={row.id}
                 onClick={() => onRowClick?.(row)}
               >
@@ -91,7 +91,7 @@ const SimpleTable = <TData,>({
                     <div className="w-full truncate">
                       {flexRender(
                         cell.column.columnDef.cell,
-                        cell.getContext(),
+                        cell.getContext()
                       )}
                     </div>
                   </TableCell>
@@ -104,10 +104,10 @@ const SimpleTable = <TData,>({
                 {isDataLoading ? (
                   <p className="mx-auto flex flex-col items-center justify-center gap-4">
                     <span>Loading...</span>
-                    <Loader2Icon className={"mx-auto size-4 animate-spin"} />
+                    <Loader2Icon className={'mx-auto size-4 animate-spin'} />
                   </p>
                 ) : (
-                  "No results."
+                  'No results.'
                 )}
               </TableCell>
             </TableRow>

@@ -1,9 +1,9 @@
-import { PillIcon } from "lucide-react";
+import { PillIcon } from 'lucide-react';
 
-import type { SidebarItems } from "@/types/sidebar";
+import type { SidebarItems } from '@/types/sidebar';
 
 export const medicineSidebarItems: SidebarItems = {
   icon: <PillIcon />,
-  title: "Medicine",
-  url: "/medicine",
+  title: 'Medicine',
+  url: '/medicine',
 };

@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import type { PropsWithChildren } from "react";
+import type { PropsWithChildren } from 'react';
 
-import { Toaster } from "@/components/ui/sonner";
+import { Toaster } from '@/components/ui/sonner';
 
 const ToastProvider = ({ children }: PropsWithChildren) => {
   return (

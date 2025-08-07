@@ -29,6 +29,8 @@ export const getDataDb = async ({ id }: z.infer<typeof getDataReqParams>) => {
     .from(dbSchema.dataTable)
     .where(eq(dbSchema.dataTable.id, id))
     .limit(1);
-  if (!data) throw new Error('Data not found');
+  if (!data) {
+    throw new Error('Data not found');
+  }
   return data;
 };

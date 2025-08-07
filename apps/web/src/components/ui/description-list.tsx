@@ -1,25 +1,25 @@
-import type React from "react";
+import type React from 'react';
 
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
-function DescriptionList({ className, ...props }: React.ComponentProps<"dl">) {
+function DescriptionList({ className, ...props }: React.ComponentProps<'dl'>) {
   return (
     <dl
+      className={cn('grid gap-6', className)}
       data-slot="description-list"
-      className={cn("grid gap-6", className)}
       {...props}
     />
   );
 }
 
-function DescriptionTerm({ className, ...props }: React.ComponentProps<"dt">) {
+function DescriptionTerm({ className, ...props }: React.ComponentProps<'dt'>) {
   return (
     <dt
-      data-slot="description-term"
       className={cn(
-        "font-medium text-sm leading-none tracking-tight",
-        className,
+        'font-medium text-sm leading-none tracking-tight',
+        className
       )}
+      data-slot="description-term"
       {...props}
     />
   );
@@ -28,11 +28,11 @@ function DescriptionTerm({ className, ...props }: React.ComponentProps<"dt">) {
 function DescriptionDetail({
   className,
   ...props
-}: React.ComponentProps<"dd">) {
+}: React.ComponentProps<'dd'>) {
   return (
     <dd
+      className={cn('text-muted-foreground text-sm', className)}
       data-slot="description-detail"
-      className={cn("text-muted-foreground text-sm", className)}
       {...props}
     />
   );
@@ -41,11 +41,11 @@ function DescriptionDetail({
 function DescriptionGroup({
   className,
   ...props
-}: React.ComponentProps<"div">) {
+}: React.ComponentProps<'div'>) {
   return (
     <div
+      className={cn('grid gap-1.5', className)}
       data-slot="description-group"
-      className={cn("grid gap-1.5", className)}
       {...props}
     />
   );

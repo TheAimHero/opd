@@ -1,5 +1,5 @@
-import CreateTest from "@/features/test/components/CreateTest";
-import TestList from "@/features/test/components/TestList";
+import CreateTest from '@/features/test/components/CreateTest';
+import TestList from '@/features/test/components/TestList';
 
 const Page = () => {
   return (

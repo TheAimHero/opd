@@ -1,14 +1,14 @@
-import { schema } from "@madhuprema/db_schema/prescribedMedicine";
+import { schema } from '@opd/db_schema/prescribedMedicine';
 import {
   type ColumnDef,
   createColumnHelper,
   getCoreRowModel,
   useReactTable,
-} from "@tanstack/react-table";
-import type z from "zod";
-import SimpleTable from "@/components/table/SimpleTable";
-import { Badge } from "@/components/ui/badge";
-import { useGetMedicines } from "../hooks/getMedicine";
+} from '@tanstack/react-table';
+import type z from 'zod';
+import SimpleTable from '@/components/table/SimpleTable';
+import { Badge } from '@/components/ui/badge';
+import { useGetMedicines } from '../hooks/getMedicine';
 
 const modSchema = schema.prescribedMedicineInsertSchema.omit({ visitId: true });
 
@@ -17,13 +17,13 @@ type PrescribedMedicine = z.infer<typeof modSchema>;
 const columnHelper = createColumnHelper<PrescribedMedicine>();
 
 const columns = (
-  onRemove?: (index: number) => void,
+  onRemove?: (index: number) => void
 ): ColumnDef<PrescribedMedicine>[] => [
   {
-    accessorKey: "medicineId",
-    id: "id",
-    header: "Name",
-    cell: function Cell({ row }) {
+    accessorKey: 'medicineId',
+    id: 'id',
+    header: 'Name',
+    cell({ row }) {
       const { data: medicine } = useGetMedicines({
         id: row.original.medicineId,
       });
@@ -31,40 +31,40 @@ const columns = (
     },
   },
   {
-    accessorKey: "morning",
-    id: "morning",
-    header: "Morning",
+    accessorKey: 'morning',
+    id: 'morning',
+    header: 'Morning',
     cell: ({ row }) => row.original.morning,
   },
   {
-    accessorKey: "afternoon",
-    id: "afternoon",
-    header: "Afternoon",
+    accessorKey: 'afternoon',
+    id: 'afternoon',
+    header: 'Afternoon',
     cell: ({ row }) => row.original.morning,
   },
   {
-    accessorKey: "evening",
-    id: "evening",
-    header: "Evening",
+    accessorKey: 'evening',
+    id: 'evening',
+    header: 'Evening',
     cell: ({ row }) => row.original.evening,
   },
   {
-    accessorKey: "note",
-    id: "note",
-    header: "Note",
+    accessorKey: 'note',
+    id: 'note',
+    header: 'Note',
     cell: ({ row }) => row.original.note,
   },
   ...(onRemove
     ? [
         columnHelper.display({
-          id: "actions",
-          header: "Actions",
+          id: 'actions',
+          header: 'Actions',
           cell: ({ row }) => (
             <div>
               <Badge
-                variant="destructive"
-                onClick={() => onRemove(row.index)}
                 className="cursor-pointer select-none"
+                onClick={() => onRemove(row.index)}
+                variant="destructive"
               >
                 Delete
               </Badge>
@@ -89,7 +89,7 @@ const PrescribedMedicineTable = ({ data, className, onRemove }: Props) => {
 
     getCoreRowModel: getCoreRowModel(),
   });
-  return <SimpleTable table={table} className={className} />;
+  return <SimpleTable className={className} table={table} />;
 };
 
 export default PrescribedMedicineTable;

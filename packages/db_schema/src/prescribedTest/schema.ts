@@ -2,8 +2,8 @@ import {
   createInsertSchema,
   createSelectSchema,
   createUpdateSchema,
-} from "drizzle-zod";
-import { prescribedTestTable } from "./db";
+} from 'drizzle-zod';
+import { prescribedTestTable } from './db';
 
 export const prescribedTestInsertSchema =
   createInsertSchema(prescribedTestTable);

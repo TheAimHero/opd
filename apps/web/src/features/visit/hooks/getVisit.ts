@@ -1,9 +1,9 @@
-import { getVisit } from "@madhuprema/schema/visit";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import { useEffect } from "react";
-import type z from "zod";
-import { env } from "@/env";
+import { getVisit } from '@opd/schema/visit';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import { useEffect } from 'react';
+import type z from 'zod';
+import { env } from '@/env';
 
 const { getVisitRes, getVisitReqParams } = getVisit;
 
@@ -12,8 +12,8 @@ const fetchVisits = async (params: z.infer<typeof getVisitReqParams>) => {
     const url = new URL(`/visit/${params.id}`, env.NEXT_PUBLIC_SERVER_URL);
     const res = await axios.get(url.toString(), {
       headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
       },
     });
     const visit = getVisitRes.parse(res.data);
@@ -23,7 +23,7 @@ const fetchVisits = async (params: z.infer<typeof getVisitReqParams>) => {
       throw new Error(
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         e.response?.data?.error as string,
-        { cause: e },
+        { cause: e }
       );
     }
     throw e;
@@ -37,21 +37,25 @@ type Actions = {
 
 export const useGetVisit = (
   params: z.infer<typeof getVisitReqParams>,
-  { onSuccess, onError }: Actions = {},
+  { onSuccess, onError }: Actions = {}
 ) => {
   const visits = useQuery({
     queryFn: () => fetchVisits(params),
     placeholderData: (prev) => prev,
-    queryKey: ["visit", params],
+    queryKey: ['visit', params],
     staleTime: 1000 * 60 * 60,
   });
   useEffect(() => {
-    if (visits.isSuccess) onSuccess?.(visits.data);
+    if (visits.isSuccess) {
+      onSuccess?.(visits.data);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visits.isSuccess, onSuccess, visits.data]);
 
   useEffect(() => {
-    if (visits.isError) onError?.(visits.error);
+    if (visits.isError) {
+      onError?.(visits.error);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visits.isError, onError, visits.error]);
 

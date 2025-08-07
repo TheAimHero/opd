@@ -1,6 +1,6 @@
-import { createSchemaFactory } from "drizzle-zod";
-import z from "zod";
-import { visitTable } from "./db";
+import { createSchemaFactory } from 'drizzle-zod';
+import z from 'zod';
+import { visitTable } from './db';
 
 const { createInsertSchema, createSelectSchema, createUpdateSchema } =
   createSchemaFactory({
