@@ -1,0 +1,55 @@
+name: Deploy Web
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches:
+      - master
+    paths:
+      - apps/web/**
+
+jobs:
+  deploy:
+    environment: production
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      deployments: write
+      id-token: write # Required for GitHub OIDC
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        working-directory: apps/web
+        run: pnpm install
+
+      - name: Build Next.js app with OpenNext
+        env:
+          NEXT_PUBLIC_SERVER_URL: ${{ secrets.NEXT_PUBLIC_SERVER_URL }}
+        working-directory: apps/web
+        run: pnpm exec opennextjs-cloudflare build
+
+      - name: Deploy with Wrangler
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          workingDirectory: apps/web
+
+      - name: Print deployment-url
+        env:
+          DEPLOYMENT_URL: ${{ steps.deploy.outputs.deployment-url }}
+        run: echo $DEPLOYMENT_URL
