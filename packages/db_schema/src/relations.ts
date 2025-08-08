@@ -1,19 +1,8 @@
-import * as allergyRelations from './allergy/relations';
-import * as dataDB from './data/relations';
-import * as medicineRelations from './medicine/relations';
-import * as patientRelations from './patient/relations';
-import * as prescribedMedicineRelations from './prescribedMedicine/relations';
-import * as prescribedTestRelations from './prescribedTest/relations';
-import * as testRelations from './test/relations';
-import * as visitRelations from './visit/relations';
-
-export default {
-  ...allergyRelations,
-  ...dataDB,
-  ...medicineRelations,
-  ...patientRelations,
-  ...prescribedMedicineRelations,
-  ...prescribedTestRelations,
-  ...testRelations,
-  ...visitRelations,
-};
+export * from './allergy/relations';
+export * from './data/relations';
+export * from './medicine/relations';
+export * from './patient/relations';
+export * from './prescribedMedicine/relations';
+export * from './prescribedTest/relations';
+export * from './test/relations';
+export * from './visit/relations';
