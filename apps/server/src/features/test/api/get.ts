@@ -4,7 +4,7 @@ import { StatusCodes } from 'http-status-codes';
 import { getAllTestDb, getTestDb } from '@/features/test/db/get';
 
 export const getAllTestHandler = async (c: Context, _next: Next) => {
-  const reqData = getTest.getAllTestReqQuery.safeParse(c.req.query);
+  const reqData = getTest.getAllTestReqQuery.safeParse(c.req.query());
   const { success, data, error } = reqData;
   if (!success) {
     throw error;

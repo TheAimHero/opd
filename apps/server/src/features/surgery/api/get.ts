@@ -4,7 +4,7 @@ import { StatusCodes } from 'http-status-codes';
 import { getAllSurgeryDb, getSurgeryDb } from '@/features/surgery/db/get';
 
 export const getAllSurgeryHandler = async (c: Context, _next: Next) => {
-  const reqData = getSurgery.getAllSurgeryReqQuery.safeParse(c.req.query);
+  const reqData = getSurgery.getAllSurgeryReqQuery.safeParse(c.req.query());
   const { success, data, error } = reqData;
   if (!success) {
     throw error;

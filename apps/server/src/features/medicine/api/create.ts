@@ -4,7 +4,9 @@ import { StatusCodes } from 'http-status-codes';
 import { createMedicineDb } from '@/features/medicine/db/create';
 
 export const createMedicineHandler = async (c: Context, _next: Next) => {
-  const reqData = createMedicine.createMedicineReqBody.safeParse(c.req.json());
+  const reqData = createMedicine.createMedicineReqBody.safeParse(
+    await c.req.json()
+  );
   const { success, data, error } = reqData;
   if (!success) {
     throw error;
