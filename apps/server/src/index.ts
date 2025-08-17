@@ -18,7 +18,9 @@ const app = new Hono({ strict: false });
 app.use(logger());
 app.use(secureHeaders());
 
-app.use(randomDelayMiddleware(100, 300));
+if (env.NODE_ENV !== 'production') {
+  app.use(randomDelayMiddleware(100, 300));
+}
 
 app.use(
   cors({
