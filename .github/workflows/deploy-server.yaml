@@ -47,13 +47,11 @@ jobs:
             BETTER_AUTH_SECRET
             BETTER_AUTH_URL
           variables:
-            NODE_ENV: ${{ env.NODE_ENV }}
-            CORS_ORIGIN: ${{ env.CORS_ORIGIN }}
+            NODE_ENV: ${{ vars.NODE_ENV }}
+            CORS_ORIGIN: ${{ vars.CORS_ORIGIN }}
           workingDirectory: apps/server
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          NODE_ENV: ${{ vars.NODE_ENV }}
-          CORS_ORIGIN: ${{ vars.CORS_ORIGIN }}
           BETTER_AUTH_SECRET: ${{ secrets.BETTER_AUTH_SECRET }}
           BETTER_AUTH_URL: ${{ secrets.BETTER_AUTH_URL }}
 
