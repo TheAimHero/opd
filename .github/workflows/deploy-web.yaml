@@ -39,7 +39,7 @@ jobs:
 
       - name: Build Next.js app with OpenNext
         env:
-          NEXT_PUBLIC_SERVER_URL: ${{ secrets.NEXT_PUBLIC_SERVER_URL }}
+          NEXT_PUBLIC_SERVER_URL: ${{ vars.NEXT_PUBLIC_SERVER_URL }}
         working-directory: apps/web
         run: pnpm exec opennextjs-cloudflare build
 
